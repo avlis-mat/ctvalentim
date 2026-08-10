@@ -10,16 +10,16 @@ import { FotoDepoimento } from "../foto-depoimento";
 
 export function Depoimentos() {
   return (
-    <section className="bg-neutral-950 py-24 text-white">
-      <h2 className="mb-12 text-center font-display text-4xl uppercase tracking-wide">
+    <section className="border-t border-white/5 bg-neutral-950 px-4 py-16 text-white md:py-24">
+      <h2 className="mb-8 text-center font-display text-3xl uppercase tracking-wide md:mb-12 md:text-4xl">
         Quem treina, aprova
       </h2>
 
-      <Carousel className="mx-auto max-w-2xl">
+      <Carousel className="mx-auto max-w-full md:max-w-2xl">
         <CarouselContent>
           {depoimentos.map((d) => (
             <CarouselItem key={d.id}>
-              <div className="space-y-4 rounded-lg border border-brand-red/20 bg-neutral-900 p-6">
+              <div className="space-y-4 rounded-lg border border-brand-red/20 bg-neutral-900 p-4 md:p-6">
                 {d.videoUrl ? (
                   <div className="aspect-video w-full overflow-hidden rounded">
                     <iframe
@@ -41,8 +41,8 @@ export function Depoimentos() {
             </CarouselItem>
           ))}
         </CarouselContent>
-        <CarouselPrevious />
-        <CarouselNext />
+        <CarouselPrevious className="hidden md:flex" />
+        <CarouselNext className="hidden md:flex" />
       </Carousel>
     </section>
   );

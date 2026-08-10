@@ -25,6 +25,7 @@ export function FotoDepoimento({
         src={foto}
         alt={nome}
         fill
+        sizes="96px"
         className="object-cover"
         onError={() => setErro(true)}
       />

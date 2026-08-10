@@ -17,10 +17,13 @@ export function Contato() {
   }
 
   return (
-    <section className="bg-brand-black py-24 text-white">
+    <section className="bg-brand-black px-4 py-16 text-white md:py-24">
+      <h2 className="mb-8 text-center font-display text-3xl uppercase tracking-wide md:mb-12 md:text-4xl">
+        Venha treinar comigo!
+      </h2>
       <form
         onSubmit={handleSubmit(onSubmit)}
-        className="mx-auto max-w-lg space-y-4"
+        className="mx-auto max-w-full space-y-4 md:max-w-lg"
       >
         <div>
           <input

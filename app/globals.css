@@ -126,7 +126,13 @@
     @apply border-border outline-ring/50;
   }
   body {
-    @apply bg-background text-foreground;
+    /* @apply bg-background text-foreground; */
+    background-color: #0a0a0a;
+    background-image: radial-gradient(
+      circle at 50% 0%,
+      rgba(220, 38, 38, 0.08),
+      transparent 60%
+    );
   }
   button:not(:disabled),
   [role="button"]:not(:disabled) {
