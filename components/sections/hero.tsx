@@ -1,18 +1,36 @@
-import Image from "next/image";
+import { getImageProps } from "next/image";
 
 export function Hero() {
+  const common = { alt: "Banner", sizes: "100vw", priority: true };
+
+  const {
+    props: { srcSet: desktopSrcSet },
+  } = getImageProps({
+    ...common,
+    src: "/hero-banner-desktop.png",
+    width: 1920,
+    height: 1080,
+  });
+
+  const {
+    props: { srcSet: mobileSrcSet, ...imgProps },
+  } = getImageProps({
+    ...common,
+    src: "/hero-banner-mobile.png",
+    width: 750,
+    height: 1334,
+  });
+
   return (
     <section className="group relative flex min-h-screen items-center justify-center overflow-hidden bg-brand-black px-4 text-white">
-      <div className="absolute inset-0">
-        <Image
-          src="/hero-banner.png"
+      <picture className="absolute inset-0 block">
+        <source media="(min-width: 768px)" srcSet={desktopSrcSet} />
+        <img
+          {...imgProps}
           alt="Treino intenso"
-          fill
-          priority
-          sizes="100vw"
-          className="object-cover transition-transform duration-700 ease-out group-hover:scale-105"
+          className="h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
         />
-      </div>
+      </picture>
 
       <div className="absolute inset-0 bg-linear-to-b from-black/60 to-black" />
 
