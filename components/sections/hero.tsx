@@ -39,7 +39,7 @@ export function Hero() {
           Supere seus limites
         </h1>
         <p className="mt-4 text-base text-neutral-300 md:text-lg">
-          Treino que transforma. Método comprovado.
+          Treino que transforma. Método comprovado. Treine com propósito.
         </p>
       </div>
     </section>
