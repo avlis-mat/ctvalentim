@@ -17,9 +17,12 @@ export function Contato() {
   }
 
   return (
-    <section className="bg-brand-black px-4 py-16 text-white md:py-24">
+    <section
+      id="contato"
+      className="bg-brand-black px-4 py-16 text-white md:py-24"
+    >
       <h2 className="mb-8 text-center font-display text-3xl uppercase tracking-wide md:mb-12 md:text-4xl">
-        Venha treinar comigo!
+        Entre em contato com o CT
       </h2>
       <form
         onSubmit={handleSubmit(onSubmit)}

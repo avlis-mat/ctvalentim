@@ -32,6 +32,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         geistMono.variable,
         "font-sans",
         roboto.variable,
+        "dark",
       )}
     >
       <body className="min-h-full flex flex-col">

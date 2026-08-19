@@ -44,7 +44,7 @@ export function TreinosDemo() {
               </div>
             </DialogTrigger>
 
-            <DialogContent className="max-w-3xl border-brand-red/20 bg-neutral-950 p-0">
+            <DialogContent className="max-h-[85vh] max-w-2xl overflow-y-auto border-brand-red/20 bg-neutral-950 p-6 text-white">
               <DialogTitle className="sr-only">{t.titulo}</DialogTitle>
               <div className="aspect-video w-full">
                 <iframe
