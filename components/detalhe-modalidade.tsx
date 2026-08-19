@@ -40,7 +40,7 @@ export function DetalheModalidade({ modalidadeId }: { modalidadeId: string }) {
           <h4 className="mb-3 font-display text-sm uppercase text-neutral-400">
             Objetivos
           </h4>
-          <div className="grid grid-cols-2 gap-3 sm:grid-cols-3">
+          <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
             {objetivosDaModalidade.map((o) => {
               const Icone = iconMap[o.icone] ?? HelpCircle;
               return (
@@ -49,7 +49,7 @@ export function DetalheModalidade({ modalidadeId }: { modalidadeId: string }) {
                   className="flex items-center gap-2 rounded border border-white/10 bg-neutral-900 p-3"
                 >
                   <Icone className="h-5 w-5 shrink-0 text-brand-red" />
-                  <span className="text-sm">{o.nome}</span>
+                  <span className="min-w-0 flex-1 text-sm">{o.nome}</span>
                 </div>
               );
             })}

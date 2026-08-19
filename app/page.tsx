@@ -9,6 +9,7 @@ import { Localizacao } from "@/components/sections/localizacao";
 import { Metodo } from "@/components/sections/metodo";
 import { Modalidades } from "@/components/sections/modalidades";
 import { Planos } from "@/components/sections/planos";
+import { Sobre } from "@/components/sections/sobre";
 import { TreinosDemo } from "@/components/sections/treinos-demo";
 
 export default function Home() {
@@ -16,14 +17,14 @@ export default function Home() {
     <main>
       <Hero />
       <Metodo />
+      <Sobre />
       <ApresentacaoPersonal />
       <Modalidades />
       <ComoFunciona />
-      <TreinosDemo />
-      <Depoimentos />
       <Faq />
       <Localizacao />
       <Planos />
+      <Depoimentos />
       <ChamadaFinal />
       <Contato />
     </main>

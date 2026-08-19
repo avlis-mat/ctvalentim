@@ -1,6 +1,14 @@
 import Image from "next/image";
 import { personal } from "@/lib/data";
 
+const bases = [
+  "Planejamento",
+  "Metodologia",
+  "Acompanhamento",
+  "Progressão",
+  "Resultado",
+];
+
 export function ApresentacaoPersonal() {
   return (
     <section className="border-t border-white/5 bg-neutral-900 px-4 py-16 text-white md:py-24">
@@ -19,6 +27,10 @@ export function ApresentacaoPersonal() {
         <h3 className="font-display text-2xl uppercase">{personal.nome}</h3>
         <p className="text-sm text-brand-red">{personal.credencial}</p>
         <p className="text-neutral-300">{personal.bio}</p>
+        <p className="mx-auto mt-4 max-w-lg text-neutral-300">
+          O trabalho é baseado em: <br />
+          {bases.join(" • ")}
+        </p>
       </div>
     </section>
   );

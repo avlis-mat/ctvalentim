@@ -41,7 +41,7 @@ export const personal: Personal = {
   nome: "Samuel Valentim",
   credencial: "CREF 016019-DF",
   foto: "https://mfitusersecure.s3.amazonaws.com/53818/pasta/8427979.jpeg",
-  bio: "Direto, exigente e comprometido com resultado real. Vou te levar até onde você nunca chegou sozinho. Também muito chato.",
+  bio: "Profissional voltado ao treinamento personalizado, preparação física e desenvolvimento de performance. Meu trabalho não é simplesmente fazer você treinar. É fazer você entender o treinamento, executar corretamente e evoluir.",
 };
 
 export type FAQItem = {
@@ -116,7 +116,7 @@ export const planos: Plano[] = [
 ];
 
 export const contatoInfo = {
-  endereco: "Ceilândia — Distrito Federal",
+  endereco: "St. P Qnp 14 conjunto G, Ceilândia — Distrito Federal",
   horario: ["Segunda a sexta", "06h às 12h", "16h às 22h"],
   whatsapp: "https://wa.me/556182274915",
   instagram: "https://instagram.com/_ctvalentim",
@@ -180,6 +180,17 @@ export const objetivos: Objetivo[] = [
   },
   { id: "corrida", nome: "Corrida", icone: "sport-shoe" },
   { id: "velocidade", nome: "Velocidade", icone: "gauge" },
+  { id: "ritmo", nome: "Ritmo", icone: "" },
+  {
+    id: "capacidade-cardiorrespiratoria",
+    nome: "Capacidade cardiorrespiratória",
+    icone: "",
+  },
+  { id: "estrategia-de-prova", nome: "Estratégia de Prova", icone: "" },
+  { id: "potencia", nome: "Potência", icone: "" },
+  { id: "mobilidade", nome: "Mobilidade", icone: "" },
+  { id: "coordenacao", nome: "Coordenação", icone: "" },
+  { id: "equilibrio", nome: "Equilíbrio", icone: "" },
 ];
 
 export type Grupo = {
@@ -369,6 +380,69 @@ export const exercicios: Exercicio[] = [
     descricao:
       "Exercícios específicos para desenvolver a força de dorsais, braços e core necessária para o movimento.",
   },
+  {
+    id: "corrida",
+    nome: "Corrida",
+    icone: "SportShoe",
+    descricao: "Corrida com preparação e objetivos personalidados.",
+  },
+  {
+    id: "flexao",
+    nome: "Flexão",
+    icone: "BicepsFlexed",
+    descricao: "Diversas modalidades de exercícios.",
+  },
+  {
+    id: "skierg",
+    nome: "SkiErg",
+    icone: "",
+    descricao:
+      "Desenvolvimento de potência, resistência e eficiência no movimento.",
+  },
+  {
+    id: "sledpush",
+    nome: "Sled Push",
+    icone: "",
+    descricao: "Força e potência para empurrar o trenó com eficiência.",
+  },
+  {
+    id: "sledpull",
+    nome: "Sled Pull",
+    icone: "",
+    descricao: "Força de puxada, resistência e controle corporal.",
+  },
+  {
+    id: "burpee-broad-jump",
+    nome: "Burpee Broad Jump",
+    icone: "",
+    descricao:
+      "Potência, coordenação e resistência para manter eficiência durante a prova.",
+  },
+  {
+    id: "row",
+    nome: "Row",
+    icone: "",
+    descricao: "Desenvolvimento de potência e resistência cardiovascular.",
+  },
+  {
+    id: "farmers-carry",
+    nome: "Farmer's Carry",
+    icone: "",
+    descricao:
+      "Força de pegada, estabilidade e resistência para transportar cargas.",
+  },
+  {
+    id: "sandbag-lunges",
+    nome: "Sandbag Lunges",
+    icone: "",
+    descricao: "Força e resistência de membros inferiores e core.",
+  },
+  {
+    id: "wall-balls",
+    nome: "Wall Balls",
+    icone: "",
+    descricao: "Resistência muscular, potência e eficiência no movimento.",
+  },
 ];
 
 // Tabela associativa "ModalidadeExercicio" — agora referenciando o Grupo pelo id
@@ -496,6 +570,66 @@ export const modalidadeExercicios: ModalidadeExercicio[] = [
     exercicioId: "progressoes-front-lever",
     grupoId: "movimentos-forca",
   },
+  {
+    modalidadeId: "taf",
+    exercicioId: "barra-fixa",
+    grupoId: "fundamentos",
+  },
+  {
+    modalidadeId: "taf",
+    exercicioId: "corrida",
+    grupoId: "fundamentos",
+  },
+  {
+    modalidadeId: "taf",
+    exercicioId: "flexao",
+    grupoId: "fundamentos",
+  },
+  {
+    modalidadeId: "hyrox",
+    exercicioId: "corrida",
+    grupoId: "fundamentos",
+  },
+  {
+    modalidadeId: "hyrox",
+    exercicioId: "skierg",
+    grupoId: "fundamentos",
+  },
+  {
+    modalidadeId: "hyrox",
+    exercicioId: "sledpush",
+    grupoId: "fundamentos",
+  },
+  {
+    modalidadeId: "hyrox",
+    exercicioId: "sledpull",
+    grupoId: "fundamentos",
+  },
+  {
+    modalidadeId: "hyrox",
+    exercicioId: "burpee-broad-jump",
+    grupoId: "fundamentos",
+  },
+  {
+    modalidadeId: "hyrox",
+    exercicioId: "row",
+    grupoId: "fundamentos",
+  },
+  {
+    modalidadeId: "hyrox",
+    exercicioId: "farmers-carry",
+    grupoId: "fundamentos",
+  },
+  {
+    modalidadeId: "hyrox",
+    exercicioId: "sandbag-lunges",
+    grupoId: "fundamentos",
+  },
+  {
+    modalidadeId: "hyrox",
+    exercicioId: "wall-balls",
+    grupoId: "fundamentos",
+  },
 ];
 
 // Modalidade continua enxuta (usada na listagem curta); o conteúdo rico vira um dicionário à parte
@@ -545,7 +679,7 @@ export const modalidades: Modalidade[] = [
     cta: "Quero evoluir na corrida",
   },
   {
-    id: "cross-training",
+    id: "crosstraining",
     nome: "Cross Training",
     descricao: "Treinamento completo, variado e desafiador.",
     cta: "Quero treinar",
@@ -612,6 +746,83 @@ export const conteudoModalidade: Record<string, ConteudoModalidade> = {
     objetivoIds: [],
     fraseDestaque: "Aprenda. Evolua. Domine seu corpo.",
   },
+  taf: {
+    tituloDestaque: "Preparação específica para TAF.",
+    paragrafos: [
+      "Seu TAF não deve ser preparado com um treinamento genérico.",
+      "O treinamento é direcionado para as exigências específicas da sua prova, levando em consideração seu nível e suas principais dificuldades.",
+    ],
+    objetivoIds: [
+      "corrida",
+      "forca",
+      "resistencia",
+      "condicionamento",
+      "velocidade",
+    ],
+    fraseDestaque: "TAF não é sorte. É preparação.",
+  },
+  hyrox: {
+    tituloDestaque: "Treinamento específico para hyrox.",
+    paragrafos: [
+      "Prepare-se para as exigências do HYROX através de um treinamento que combina corrida, força, potência, resistência e condicionamento.",
+      "Preparamos você para cada etapa da prova, desenvolvendo as capacidades físicas necessárias para alcançar seu melhor desempenho.",
+    ],
+    objetivoIds: [
+      "corrida",
+      "forca",
+      "resistencia",
+      "condicionamento",
+      "velocidade",
+    ],
+    fraseDestaque: "Corra. Empurre. Puxe. Carregue. Repita.",
+  },
+  corrida: {
+    tituloDestaque: "Corra melhor. Corra mais rápido.",
+    paragrafos: [
+      "Treinamento direcionado para desenvolver sua capacidade de corrida através de diferentes estímulos.",
+    ],
+    objetivoIds: [
+      "corrida",
+      "ritmo",
+      "resistencia",
+      "velocidade",
+      "capacidade-cardiorrespiratoria",
+      "estrategia-de-prova",
+    ],
+    fraseDestaque: "Do iniciante ao atleta.",
+  },
+  crosstraining: {
+    tituloDestaque: "Treinamento completo.",
+    paragrafos: [
+      "Uma combinação de diferentes capacidades físicas dentro de uma mesma metodologia de treinamento.",
+      "Treinos variados, desafiadores e estruturados para quem busca melhorar sua capacidade física de forma completa.",
+    ],
+    objetivoIds: [
+      "forca",
+      "resistencia",
+      "potencia",
+      "mobilidade",
+      "coordenacao",
+      "condicionamento",
+    ],
+    fraseDestaque: "Treine de forma completa. Treine com propósito.",
+  },
+  funcional: {
+    tituloDestaque: "Movimento. Força. Condicionamento.",
+    paragrafos: [
+      "Treinamento dinâmico para desenvolver diferentes capacidades físicas.",
+    ],
+    objetivoIds: [
+      "forca",
+      "resistencia",
+      "potencia",
+      "mobilidade",
+      "coordenacao",
+      "condicionamento",
+      "equilibrio",
+    ],
+    fraseDestaque: "Treine com propósito. Treine com intensidade.",
+  },
 };
 
 // JOIN: reconstrói grupo + exercícios pra uma modalidade
@@ -634,3 +845,67 @@ export function detalhesPorModalidade(modalidadeId: string) {
     exercicios: lista,
   }));
 }
+
+export type PassoProcesso = {
+  id: string;
+  titulo: string;
+  icone: string;
+};
+
+export const processo: PassoProcesso[] = [
+  { id: "avaliar", titulo: "Avaliar", icone: "ClipboardCheck" },
+  { id: "planejar", titulo: "Planejar", icone: "Map" },
+  { id: "treinar", titulo: "Treinar", icone: "Dumbbell" },
+  { id: "progredir", titulo: "Progredir", icone: "TrendingUp" },
+  { id: "evoluir", titulo: "Evoluir", icone: "Sparkles" },
+];
+
+export type Diferencial = {
+  id: string;
+  titulo: string;
+  descricao: string;
+  icone: string;
+};
+
+export const diferenciais: Diferencial[] = [
+  {
+    id: "personalizacao",
+    titulo: "Personalização",
+    descricao: "Seu treinamento é direcionado para seu objetivo e nível atual.",
+    icone: "UserCheck",
+  },
+  {
+    id: "metodologia",
+    titulo: "Metodologia",
+    descricao:
+      "Utilizamos diferentes métodos e estratégias para desenvolver cada capacidade física.",
+    icone: "BookOpen",
+  },
+  {
+    id: "periodizacao",
+    titulo: "Periodização",
+    descricao:
+      "Os estímulos são organizados para gerar evolução de forma planejada.",
+    icone: "CalendarClock",
+  },
+  {
+    id: "acompanhamento",
+    titulo: "Acompanhamento",
+    descricao:
+      "Orientação, correção técnica e acompanhamento durante o treinamento.",
+    icone: "Eye",
+  },
+  {
+    id: "progressao",
+    titulo: "Progressão",
+    descricao: "Conforme você evolui, o treinamento também evolui.",
+    icone: "TrendingUp",
+  },
+  {
+    id: "cobranca",
+    titulo: "Cobrança",
+    descricao:
+      "Você terá orientação para fazer aquilo que precisa ser feito, mesmo quando não estiver fácil.",
+    icone: "Siren",
+  },
+];
