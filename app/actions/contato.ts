@@ -1,10 +1,16 @@
 "use server";
 
-import { Resend } from "resend";
+import nodemailer from "nodemailer";
 
 import { contatoSchema } from "@/lib/schema";
 
-const resend = new Resend(process.env.RESEND_API_KEY);
+const transporter = nodemailer.createTransport({
+  service: "gmail",
+  auth: {
+    user: process.env.GMAIL_USER,
+    pass: process.env.GMAIL_APP_PASSWORD,
+  },
+});
 
 export async function enviarContato(data: unknown) {
   const parsed = contatoSchema.safeParse(data);
@@ -15,25 +21,16 @@ export async function enviarContato(data: unknown) {
   const { nome, email, telefone, mensagem } = parsed.data;
 
   try {
-    const { error } = await resend.emails.send({
-      from: "CT Valentim <onboarding@resend.dev>",
-      to: "mateus.avlis@outlook.com",
+    await transporter.sendMail({
+      from: `CT Valentim <${process.env.GMAIL_USER}>`,
+      to: "mateusavlis1@gmail.com",
       replyTo: email,
       subject: `Novo contato de ${nome}`,
       text: `Nome: ${nome}\nE-mail: ${email}\nTelefone: ${telefone}\nMensagem: ${mensagem}`,
     });
-
-    if (error) {
-      console.error("Erro ao enviar e-mail:", error);
-      return {
-        success: false,
-        errors: { _root: ["Erro ao enviar o e-mail. Tente novamente."] },
-      };
-    }
-
     return { success: true };
   } catch (error) {
-    console.error("Erro de rede/conexão ao enviar e-mail:", error);
+    console.error("Erro ao enviar e-mail via gmail:", error);
     return {
       success: false,
       errors: { _root: ["Erro ao enviar o e-mail. Tente novamente."] },
