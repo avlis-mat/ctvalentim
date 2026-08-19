@@ -25,7 +25,7 @@ export function ChamadaFinal() {
         Comece a treinar com direção.
       </p>
       <Link
-        href="#contato"
+        href="https://client.mfitpersonal.com.br/out/signup-link/NTM4MTg="
         className="mt-6 inline-block rounded bg-brand-red px-8 py-4 font-display uppercase"
       >
         Quero começar

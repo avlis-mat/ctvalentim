@@ -6,7 +6,7 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from "@/components/ui/carousel";
-import { planos } from "@/lib/data";
+import { contatoInfo, planos } from "@/lib/data";
 
 export function Planos() {
   return (
@@ -52,7 +52,10 @@ export function Planos() {
                 </div>
 
                 <Link
-                  href="#contato"
+                  href={
+                    p.ctaLink ||
+                    "https://pages.mfitpersonal.com.br/index?acao=page&tipo=2&buyPage=89224&page=89224"
+                  }
                   className="mt-6 inline-block rounded bg-brand-red px-4 py-2 text-sm font-display uppercase"
                 >
                   {p.cta}

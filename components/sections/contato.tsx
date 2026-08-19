@@ -3,9 +3,14 @@
 import { enviarContato } from "@/app/actions/contato";
 import { ContatoFormData, contatoSchema } from "@/lib/schema";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { useState } from "react";
 import { useForm } from "react-hook-form";
 
 export function Contato() {
+  const [status, setStatus] = useState<
+    "idle" | "submitting" | "success" | "error"
+  >("idle");
+
   const {
     register,
     handleSubmit,
@@ -13,7 +18,9 @@ export function Contato() {
   } = useForm<ContatoFormData>({ resolver: zodResolver(contatoSchema) });
 
   async function onSubmit(data: ContatoFormData) {
-    await enviarContato(data);
+    setStatus("submitting");
+    const result = await enviarContato(data);
+    setStatus(result.success ? "success" : "error");
   }
 
   return (
@@ -74,10 +81,15 @@ export function Contato() {
           disabled={isSubmitting}
           className="w-full rounded bg-brand-red py-3 font-display uppercase tracking-wide"
         >
-          {isSubmitting ? "Enviando..." : "Quero treinar"}
+          {isSubmitting ? "Enviando..." : "Enviar"}
         </button>
-        {isSubmitSuccessful && (
+        {status === "success" && (
           <p className="text-green-500">Mensagem enviada!</p>
+        )}
+        {status === "error" && (
+          <p className="text-brand-red">
+            Ocorreu um erro ao enviar a mensagem. Tente novamente.
+          </p>
         )}
       </form>
     </section>

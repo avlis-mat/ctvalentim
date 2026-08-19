@@ -81,6 +81,7 @@ export type Plano = {
   modalidade: string;
   opcoes: { frequencia: string; preco: string }[];
   cta: string;
+  ctaLink?: string;
   consulteApenas?: boolean;
 };
 

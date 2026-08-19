@@ -11,7 +11,7 @@ import {
   DialogTrigger,
   DialogTitle,
 } from "@/components/ui/dialog";
-import { modalidades } from "@/lib/data";
+import { contatoInfo, modalidades } from "@/lib/data";
 import { DetalheModalidade } from "../detalhe-modalidade";
 
 export function Metodo() {
@@ -58,7 +58,10 @@ export function Metodo() {
                   <DetalheModalidade modalidadeId={m.id} />
 
                   <Link
-                    href="#contato"
+                    href={
+                      contatoInfo.whatsapp +
+                      `?text=${encodeURIComponent(m.cta)}`
+                    }
                     className="mt-6 inline-block rounded bg-brand-red px-6 py-3 font-display text-sm uppercase"
                   >
                     {m.cta}
@@ -71,7 +74,7 @@ export function Metodo() {
       </Carousel>
 
       <Link
-        href="#contato"
+        href={contatoInfo.whatsapp}
         className="mt-8 inline-block rounded bg-brand-red px-8 py-4 font-display uppercase"
       >
         Quero começar
