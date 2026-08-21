@@ -23,7 +23,7 @@ export async function enviarContato(data: unknown) {
   try {
     await transporter.sendMail({
       from: `CT Valentim <${process.env.GMAIL_USER}>`,
-      to: "mateusavlis1@gmail.com",
+      to: "samuelvalentim091@gmail.com",
       replyTo: email,
       subject: `Novo contato de ${nome}`,
       text: `Nome: ${nome}\nE-mail: ${email}\nTelefone: ${telefone}\nMensagem: ${mensagem}`,

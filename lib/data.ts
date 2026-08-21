@@ -646,7 +646,7 @@ export const modalidades: Modalidade[] = [
     id: "musculacao",
     nome: "Musculação",
     descricao: "Método, estratégia e planejamento — não só ficha de treino.",
-    cta: "Quero treinar",
+    cta: "Quero treinar musculação",
   },
   {
     id: "emagrecimento",
@@ -683,13 +683,13 @@ export const modalidades: Modalidade[] = [
     id: "crosstraining",
     nome: "Cross Training",
     descricao: "Treinamento completo, variado e desafiador.",
-    cta: "Quero treinar",
+    cta: "Quero treinar Cross Training",
   },
   {
     id: "funcional",
     nome: "Funcional",
     descricao: "Movimento, força e condicionamento dinâmico.",
-    cta: "Quero treinar",
+    cta: "Quero treinar Funcional",
   },
 ];
 

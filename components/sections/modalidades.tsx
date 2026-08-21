@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { modalidades } from "@/lib/data";
+import { contatoInfo, modalidades } from "@/lib/data";
 import {
   Accordion,
   AccordionContent,
@@ -26,7 +26,9 @@ export function Modalidades() {
                 <DetalheModalidade modalidadeId={m.id} />
               </div>
               <Link
-                href="#contato"
+                href={
+                  contatoInfo.whatsapp + `?text=${encodeURIComponent(m.cta)}`
+                }
                 className="mt-4 inline-block rounded bg-brand-red px-4 py-2 text-sm font-display uppercase"
               >
                 {m.cta}
