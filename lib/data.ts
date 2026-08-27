@@ -120,7 +120,7 @@ export const contatoInfo = {
   endereco: "St. P Qnp 14 conjunto G, Ceilândia — Distrito Federal",
   horario: ["Segunda a sexta", "06h às 12h", "16h às 22h"],
   whatsapp: "https://wa.me/556182274915",
-  instagram: "https://instagram.com/_ctvalentim",
+  instagram: "https://instagram.com/ctvalentim_",
 };
 
 export type TreinoDemo = {

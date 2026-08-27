@@ -23,10 +23,10 @@ export async function enviarContato(data: unknown) {
   try {
     await transporter.sendMail({
       from: `CT Valentim <${process.env.GMAIL_USER}>`,
-      to: "samuelvalentim091@gmail.com",
+      to: "Samuelvalentim091@gmail.com",
       replyTo: email,
       subject: `Novo contato de ${nome}`,
-      text: `Nome: ${nome}\nE-mail: ${email}\nTelefone: ${telefone}\nMensagem: ${mensagem}`,
+      html: `<b>Nome:</b> ${nome}<br><b>E-mail:</b> ${email}<br><b>Telefone:</b> <a href="https://wa.me/55${telefone}">${telefone}</a> <br><b>Mensagem:</b> ${mensagem}`,
     });
     return { success: true };
   } catch (error) {
