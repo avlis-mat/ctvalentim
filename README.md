@@ -1,36 +1,91 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# CT Valentim — Landing Page
 
-## Getting Started
+Landing page para o **CT Valentim**, centro de treinamento personalizado em Ceilândia-DF, do treinador Samuel Valentim (CREF 016019-DF).
 
-First, run the development server:
+Construída como projeto de prática de front-end com **Next.js, React e TypeScript**.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+## 🛠️ Stack
+
+- **Next.js** (App Router) + **TypeScript**
+- **Tailwind CSS v4**
+- **shadcn/ui** (variante Base UI)
+- **React Hook Form** + **Zod** para validação de formulário
+- **Nodemailer** (via Gmail SMTP) para envio do formulário de contato
+- **lucide-react** para ícones
+- Deploy: **Vercel**
+
+## 📄 Seções da página
+
+| Seção | Descrição |
+|---|---|
+| Hero | Banner principal com imagem responsiva (art direction mobile/desktop) |
+| Método | Carrossel com as modalidades e chamada geral |
+| Sobre | Processo de trabalho e diferenciais do CT |
+| Apresentação do personal | Foto, credencial e bio do treinador |
+| Modalidades | Accordion com descrição, objetivos e exercícios por modalidade |
+| Como Funciona | Etapas do processo + filosofia do método |
+| Galeria | Fotos e vídeos reais do CT, com lightbox |
+| Depoimentos | Carrossel de depoimentos de alunos (foto, vídeo ou só texto) |
+| Localização | Endereço, horário, WhatsApp e Instagram |
+| Planos | Carrossel de planos por modalidade |
+| Contato | Formulário validado, com envio real de e-mail |
+
+## 🗂️ Modelo de dados — `lib/data.ts`
+
+Todo o conteúdo editável do site (modalidades, exercícios, depoimentos, planos, etc.) vive num único arquivo, `lib/data.ts`, modelado como um **banco de dados relacional em memória** — não é só uma lista de objetos soltos. Isso significa que **qualquer pessoa pode atualizar o conteúdo do site editando só esse arquivo**, sem tocar em nenhum componente React.
+
+### Por que relacional, e não um JSON aninhado
+
+Um exercício como "Flexões" pode aparecer em mais de uma modalidade (Calistenia, Funcional, Cross Training). Se cada modalidade guardasse seus próprios exercícios "dentro" dela, editar a descrição de "Flexões" exigiria lembrar de corrigir em todo lugar que ele aparece. Em vez disso, o dado é modelado com entidades e relacionamentos, do jeito que se desenharia um diagrama ER:
+
+```
+Modalidade ──┐
+             ├──< ModalidadeExercicio >──┤ Exercicio
+Grupo ───────┘
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+- **`Modalidade`** — cada modalidade oferecida (Musculação, Calistenia, TAF...)
+- **`Exercicio`** — cada exercício existe uma única vez
+- **`Grupo`** — agrupamento visual dos exercícios (Fundamentos, Movimentos Dinâmicos...)
+- **`ModalidadeExercicio`** — tabela associativa (N:N) que liga exercício ↔ modalidade ↔ grupo
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Uma função (`detalhesPorModalidade`) faz o "JOIN" na hora de exibir, reconstruindo a lista agrupada a partir das três tabelas — os componentes nunca leem os arrays crus diretamente.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+O mesmo padrão se repete para **`Objetivo`** (reaproveitado entre modalidades via `objetivoIds`) e para o conteúdo textual de cada modalidade (`conteudoModalidade`).
 
-## Learn More
+### Como editar o conteúdo
 
-To learn more about Next.js, take a look at the following resources:
+Todo o conteúdo do site fica em **`lib/data.ts`**. Alguns exemplos do que dá pra mudar sem tocar em componentes:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- **Adicionar um depoimento** → adicionar um objeto em `depoimentos` (foto, vídeo e modalidade são opcionais)
+- **Adicionar uma foto/vídeo na galeria** → adicionar um objeto em `galeria`
+- **Adicionar um exercício a uma modalidade existente** → adicionar em `exercicios` e depois ligar em `modalidadeExercicios`
+- **Mudar o texto de apresentação de uma modalidade** → editar a entrada correspondente em `conteudoModalidade`
+- **Atualizar plano/preço** → editar `planos`
+- **Trocar endereço, horário, WhatsApp ou Instagram** → editar `contatoInfo`
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Ícones são referenciados por nome (string, ex: `"Dumbbell"`) e resolvidos em **`lib/icon-map.ts`** — para usar um ícone novo, basta importá-lo do `lucide-react` nesse arquivo e adicioná-lo ao mapa.
 
-## Deploy on Vercel
+## 🚀 Rodando localmente
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+```bash
+pnpm install
+pnpm dev
+```
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Abre em [http://localhost:3000](http://localhost:3000).
+
+### Variáveis de ambiente
+
+Cria um `.env.local` na raiz com:
+
+```
+GMAIL_USER=seu-email@gmail.com
+GMAIL_APP_PASSWORD=sua-senha-de-app-de-16-caracteres
+```
+
+(Necessário para o envio do formulário de contato funcionar. Veja como gerar uma senha de app em [myaccount.google.com/apppasswords](https://myaccount.google.com/apppasswords).)
+
+## 📦 Deploy
+
+O projeto está configurado para deploy contínuo na [Vercel](https://vercel.com) — todo push na branch principal atualiza a versão em produção automaticamente. As variáveis de ambiente acima também precisam ser configuradas no dashboard do projeto na Vercel (Settings → Environment Variables).
